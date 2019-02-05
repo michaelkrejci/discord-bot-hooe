@@ -1,0 +1,33 @@
+{
+  "name": "discord-bot-hooe",
+  "version": "0.1.0",
+  "description": "discord-bot-hooe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "start": "npm-run-all clean --parallel watch:build watch:server --print-label",
+    "watch:build": "tsc --watch",
+    "watch:server": "nodemon './dist/index.js' --watch './dist'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelkrejci/discord-bot-hooe.git"
+  },
+  "keywords": [],
+  "author": "mkrejci",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelkrejci/discord-bot-hooe/issues"
+  },
+  "homepage": "https://github.com/michaelkrejci/discord-bot-hooe#readme",
+  "dependencies": {
+    "@types/node": "^10.12.21",
+    "discord.js": "^11.4.2",
+    "nodemon": "^1.18.9",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.3.1"
+  },
+  "devDependencies": {}
+}
