@@ -2,7 +2,10 @@ import * as Minestat from './minestat.js';
 
 export class VersionExtractor {
 
-    constructor() {
+    refreshCallback: () => void;
+
+    constructor(handleUpdate: () => void) {
+        this.refreshCallback = handleUpdate;
         Minestat.init('78.104.172.7', 48102, () => {
             console.log("Minecraft server status of " + Minestat.address + " on port " + Minestat.port + ":");
             if(Minestat.online)
@@ -15,10 +18,14 @@ export class VersionExtractor {
             {
                 console.log("Server is offline!");
             }
-        })
+        });
     }
 
     public getMotd(): string {
         return Minestat.motd;
+    }
+
+    public refresh = () => {
+        Minestat.init('78.104.172.7', 48102, this.refreshCallback);
     }
 }

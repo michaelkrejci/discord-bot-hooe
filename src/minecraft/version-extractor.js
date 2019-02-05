@@ -2,7 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Minestat = require("./minestat.js");
 class VersionExtractor {
-    constructor() {
+    constructor(handleUpdate) {
+        this.refresh = () => {
+            Minestat.init('78.104.172.7', 48102, this.refreshCallback);
+        };
+        this.refreshCallback = handleUpdate;
         Minestat.init('78.104.172.7', 48102, () => {
             console.log("Minecraft server status of " + Minestat.address + " on port " + Minestat.port + ":");
             if (Minestat.online) {
